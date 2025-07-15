@@ -1,0 +1,135 @@
+<Window x:Class="FitnesCentar38cet.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FitnesCentar38cet"
+        mc:Ignorable="d"
+        Title="UPRAVLJANJE FITNES CENTROM" Height="450" Width="1100" Background="#f0f4f8">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#2c3e50" Height="60">
+            <TextBlock Text="REGISTRACIJA ČLANOVA FITNES CENTRA" 
+                       Foreground="White" 
+                       FontSize="24" 
+                       FontWeight="Bold" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center"/>
+        </Border>
+        
+        <!-- Main Content -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Input Panel -->
+            <Border Grid.Column="0" Background="White" CornerRadius="8" Margin="0,0,10,0">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="2" BlurRadius="5" Opacity="0.2"/>
+                </Border.Effect>
+                
+                <StackPanel Margin="20">
+                    <TextBlock Text="Forma za registraciju člana" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,20"/>
+                    
+                    <Label Content="Ime i prezime:" FontWeight="Medium"/>
+                    <TextBox Name="txtImePrezime" Height="35" Padding="5" Margin="0,0,0,15" BorderBrush="#3498db" BorderThickness="2"/>
+                    
+                    <Label Content="Tip članarine:" FontWeight="Medium"/>
+                    <ComboBox Name="cmbTipClanarine" Height="35" Padding="5" Margin="0,0,0,15" BorderBrush="#3498db" BorderThickness="2">
+                        <ComboBoxItem>Mesečna</ComboBoxItem>
+                        <ComboBoxItem>Kvartalna</ComboBoxItem>
+                        <ComboBoxItem>Polugodišnja</ComboBoxItem>
+                        <ComboBoxItem>Godišnja</ComboBoxItem>
+                        <ComboBoxItem>VIP</ComboBoxItem>
+                    </ComboBox>
+                    
+                    <Label Content="Broj telefona:" FontWeight="Medium"/>
+                    <TextBox Name="txtTelefon" Height="35" Padding="5" Margin="0,0,0,15" BorderBrush="#3498db" BorderThickness="2"/>
+                    
+                    <Button Name="btnDodaj" 
+                            Content="REGISTRUJ ČLANA" 
+                            Height="45" 
+                            Background="#27ae60" 
+                            Foreground="White" 
+                            FontWeight="Bold" 
+                            FontSize="14"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Click="Dodaj_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    
+                    <Button Name="btnObrisi" 
+                            Content="OBRIŠI FORMU" 
+                            Height="35" 
+                            Background="#e74c3c" 
+                            Foreground="White" 
+                            FontWeight="Bold" 
+                            Margin="0,10,0,0"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Click="Obrisi_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+            </Border>
+            
+            <!-- Data Display Panel -->
+            <Border Grid.Column="1" Background="White" CornerRadius="8">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="2" BlurRadius="5" Opacity="0.2"/>
+                </Border.Effect>
+                
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock Grid.Row="0" Text="Registrovani članovi" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,10"/>
+                    
+                    <DataGrid Grid.Row="1" 
+                              Name="DGCentralni" 
+                              AutoGenerateColumns="True"
+                              IsReadOnly="True" 
+                              CanUserAddRows="False" 
+                              AlternatingRowBackground="#ecf0f1"
+                              GridLinesVisibility="None"
+                              HeadersVisibility="Column"
+                              BorderThickness="1"
+                              BorderBrush="#bdc3c7">
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="Background" Value="#34495e"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="Height" Value="35"/>
+                                <Setter Property="Padding" Value="10,0"/>
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <Setter Property="Height" Value="30"/>
+                            </Style>
+                        </DataGrid.RowStyle>
+                    </DataGrid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
